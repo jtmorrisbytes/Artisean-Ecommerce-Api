@@ -1,0 +1,14 @@
+{
+  "name": "lib",
+  "version": "0.0.1",
+  "description": "This folder contains common code shared between client/server,<br />\r such as models, schemas, and algorythms",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1"
+  }
+}

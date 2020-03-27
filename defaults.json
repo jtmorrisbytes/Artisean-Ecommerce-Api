@@ -1,0 +1,20 @@
+{
+  "development": {
+    "port": 3001,
+    "host": "127.0.0.1",
+    "apiBasePath": "/api",
+    "morganLogLevel": "dev"
+  },
+  "production": {
+    "port": 80,
+    "host": "0.0.0.0",
+    "apiBasePath": "/api",
+    "morganLogLevel": "tiny"
+  },
+  "testing": {
+    "port": 3001,
+    "host": "127.0.0.1",
+    "apiBasePath": "/api",
+    "morganLogLevel": "dev"
+  }
+}
