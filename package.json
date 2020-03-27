@@ -1,5 +1,5 @@
 {
-  "name": "express-massive-backend",
+  "name": "Artisean-Ecommerce-Api",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -13,10 +13,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jtmorrisbytes/react-express.git"
+    "url": "git@github.com:jtmorrisbytes/Artisean-Ecommerce-Api.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jordan Morris",
   "license": "MIT",
   "engines": {
     "node": ">=12.16.1"
