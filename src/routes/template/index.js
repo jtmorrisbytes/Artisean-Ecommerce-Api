@@ -1,5 +1,5 @@
 // do processing here
-
+const basePath = "./template";
 const router = require("express").Router();
 
-module.exports = router;
+module.exports = { basePath, router };

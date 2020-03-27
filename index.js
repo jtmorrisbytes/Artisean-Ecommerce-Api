@@ -17,21 +17,34 @@ if (process.NODE_ENV === "production") {
   app.use(morgan("tiny"));
 }
 
+console.info("Mounting information route for api");
+app.get(config.apiBasePath, (req, res) => {
+  res.json({
+    info: {
+      name: "Artesian Ecommerce api",
+      version: "0.0.1"
+    }
+  });
+});
+
+console.log("mounting routers...");
 const routeDir = path.join(config.CWD, config.routesDir);
 console.debug(`grabbing route module from  ${routeDir}`);
 const routes = require(routeDir);
+
+for (route in routes) {
+  console.debug(
+    "route",
+    route,
+    "routes",
+    routes,
+    "routes[route]",
+    routes[route]
+  );
+  const { router, basePath } = routes[route];
+  app.use(config.apiBasePath, router);
+}
 console.log("routes", routes);
-// use the api server
-// mount all the routes in the routes module programmatically
-// console.log(`Mounting routes at ${routeDir}`);
-// for (routeName in routes) {
-//   let route = routes[routeName];
-//   console.info(
-//     "mounting route:'" + routeName + "'",
-//     `at path ${config.apiBasePath + route.basePath}`
-//   );
-//   app.use(config.apiBasePath + route.basePath, route.router);
-// }
 
 app.listen(PORT, HOST, () => {
   console.log(`SERVER LISTENING on ${HOST}:${PORT}`);
