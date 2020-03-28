@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine-node spec/routes",
-    "test:watch": "jasmine-node spec/routes --autotest",
+    "test": "npx jasmine",
+    "test:watch": "npx cross-env NODE_ENV=test nodemon --watch src/routes --watch spec/routes --exec npx jasmine",
     "testDB": "",
     "buildSwaggerFromJSDoc": "npx swagger-jsdoc -d ./src/swaggerDef.js src/routes/*.js lib/**/*.js",
     "testCI": "",

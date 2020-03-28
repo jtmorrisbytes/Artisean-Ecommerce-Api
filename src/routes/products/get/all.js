@@ -6,8 +6,10 @@
 const joi = require("@hapi/joi");
 const baseModel = require("../../../../lib/src/models/product");
 // const requestModel;
+// this function has had the this keyword explicitly
+// bound where this.data = the data in the parent controller
 function getAll(req, res) {
-  res.send(501);
+  res.json(this.data);
 }
 module.exports = {
   controller: getAll,

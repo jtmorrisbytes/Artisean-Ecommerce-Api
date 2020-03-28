@@ -2,7 +2,7 @@
 const basePath = "/product";
 const basePathPlural = basePath + "s";
 const router = require("express").Router();
-
+const data = require("./data.json");
 const products = {
   get: require("./get"),
   post: require("./post"),
@@ -10,7 +10,7 @@ const products = {
   del: require("./delete")
 };
 
-router.get(basePathPlural, products.get.all.controller);
+router.get(basePathPlural, products.get.all.controller.bind({ data: data }));
 router.get(
   basePath + "/" + products.get.one.params.request,
   products.get.one.controller
