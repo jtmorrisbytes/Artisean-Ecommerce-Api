@@ -4,6 +4,4 @@ function getController(filename) {
   return require(filename.replace("spec", "src").replace(".spec.", "."))
     .controller;
 }
-module.exports = {
-  getController
-};
+module.exports = getController;

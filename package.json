@@ -38,6 +38,7 @@
   "devDependencies": {
     "jasmine-node": "^3.0.0",
     "mocha": "^7.1.0",
+    "supertest": "^4.0.2",
     "swagger-jsdoc": "^4.0.0"
   }
 }
