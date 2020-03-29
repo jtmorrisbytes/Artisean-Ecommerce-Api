@@ -1,7 +1,7 @@
 const model = require("../../../../lib/src/models/product");
 const data = require("../../../../src/routes/products/data.json");
 const request = require("supertest");
-describe("get One product by id", () => {
+describe("GET /product/:id", () => {
   let app;
   let productID = 1;
   let product;
@@ -93,7 +93,7 @@ describe("get One product by id", () => {
         });
     });
   }
-  it("should respond with bad request when req.params.id is out of range ", done => {
+  it("should respond with bad request when req.params.id is below the minimum value ", done => {
     // expect(req.stat);
     if (model.modelInfo.id.min > 0) {
       request(app)
@@ -107,6 +107,14 @@ describe("get One product by id", () => {
         });
     }
   });
+  it("should respond with bad request when req.params.id is greater than or equal to the maximum value - 1", done => {
+    request(app)
+      .get(testUrl + (model.modelInfo.id.max - 1).toString())
+      .expect(400, done);
+  });
+  it("should respond to the client with a message describing the out of range condition", done => {
+    done();
+  });
   it("should respond with bad request when req.params.id is badly formatted", done => {
     request(app)
       .get(testUrl + "-1")
@@ -117,7 +125,7 @@ describe("get One product by id", () => {
         expect(res.status).toEqual(400);
         // res.body should indicate the source of the error
         // expect(res.body).toEqual(false)
+        done();
       });
-    done();
   });
 });

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx jasmine",
+    "test": "npx cross-env NODE_ENV=test npx jasmine",
     "test:watch": "npx cross-env NODE_ENV=test nodemon --watch src/routes --watch spec/routes --exec npx jasmine",
     "testDB": "",
     "buildSwaggerFromJSDoc": "npx swagger-jsdoc -d ./src/swaggerDef.js src/routes/*.js lib/**/*.js",
