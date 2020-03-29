@@ -6,8 +6,8 @@ const app = express();
 
 if (config.NODE_ENV === "production") {
   app.use(morgan("tiny"));
-} else if (!config.NODE_ENV.includes("test")) {
-  app.use(morgan("tiny"));
+} else if (config.DEBUG === true || process.env.DEBUG === true) {
+  app.use(morgan("dev"));
 }
 console.debug("app recieved config object", config);
 console.info("Mounting information route for api");

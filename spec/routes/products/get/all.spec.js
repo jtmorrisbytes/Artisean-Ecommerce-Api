@@ -36,11 +36,11 @@ describe("getAll products", () => {
         if (err) {
           done(err);
         }
-        expect(res.body).toBeDefined("The response body was empty");
+        expect(res.body.data).toBeDefined("The response body was empty");
         expect(
-          res.body.__proto__.constructor === [].__proto__.constructor
+          res.body.data.__proto__.constructor === [].__proto__.constructor
         ).toBeTrue();
-        res.body.forEach(product => {
+        res.body.data.forEach(product => {
           expect(
             product.__proto__.constructor === {}.__proto__.constructor
           ).toBeTrue("Expecting the items in the response array to be objects");
@@ -64,11 +64,11 @@ describe("getAll products", () => {
           );
           expect(product.name).toEqual(jasmine.any(String));
           expect(product.name.length).toBeGreaterThanOrEqual(
-            model.modelInfo.name.min,
+            model.name.min,
             `product.name === ${product.name}`
           );
           expect(product.name.length).toBeLessThanOrEqual(
-            model.modelInfo.name.max,
+            model.name.max,
             `product.name === ${product.name}`
           );
           expect(product.description).toBeDefined(
@@ -77,7 +77,7 @@ describe("getAll products", () => {
           if (product.description != null) {
             expect(product.description).toEqual(jasmine.any(String));
             expect(product.description.length).toBeLessThanOrEqual(
-              model.modelInfo.description.max
+              model.description.max
             );
           }
         });

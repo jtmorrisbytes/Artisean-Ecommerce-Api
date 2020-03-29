@@ -183,86 +183,86 @@ describe("Products", () => {
       console.log("");
       done();
     });
-    it(`should have the correct response for ${path}`, done => {
-      let requestModel = model.request[modelPath];
-      let responseModel = model.response[modelPath];
-      for (let methodName in requestModel) {
-        let requestMethod = requestModel[methodName];
-        if (requestMethod === null) {
-          supertest(app)
-            [methodName](path)
-            .expect(404, done);
-        } else if (requestMethod.params.request) {
-          // console.log("this iteration has defined request parameters");
-          if (requestMethod.params.request.key) {
-            // if request has a single key in url
-            if (requestMethod.params.request.type === "number") {
-              // and if the request type is a number
-              supertest(app)
-                [methodName](
-                  path.replace(
-                    `:${requestMethod.params.request.key}`,
-                    "abcdefg"
-                  )
-                )
-                .end((err, req) => {
-                  expect(req.statusCode).toBe(
-                    400,
-                    `${methodName.toUpperCase()} ${path}`
-                  );
-                  // eventually you should test the response format+
-                  console.warn(
-                    "WARNING: " +
-                      methodName.toUpperCase() +
-                      ":" +
-                      path +
-                      ": the error response format for type number is not being tested yet"
-                  );
-                  done();
-                });
-              // done();
-              continue;
-            } else if (requestMethod.params.request.type === "string") {
-              // intentionally send a known bad request to the request handler
-              supertest(app)
-                [methodName](
-                  path.replace(
-                    `:${requestMethod.params.request.key}`,
-                    Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
-                  )
-                )
-                .end((err, res) => {
-                  console.log(response);
-                  if (err) {
-                    done(err);
-                  } else {
-                    expect(res.statusCode).toBe(400);
-                    // make sure to test the response format
-                    console.warn(
-                      methodName.toUpperCase() +
-                        ":" +
-                        path +
-                        ": the response format for type string is not being tested"
-                    );
-                    done();
-                  }
-                });
-            }
-          }
-        } else if (requestMethod.params.query) {
-          console.log(
-            "request method query params",
-            requestMethod.params.query
-          );
-          console.info(
-            "****tests for requestMethod.params.query have not been implemented yet****\r\n"
-          );
-          done();
-        }
+    // it(`should have the correct response for ${path}`, done => {
+    //   let requestModel = model.request[modelPath];
+    //   let responseModel = model.response[modelPath];
+    //   for (let methodName in requestModel) {
+    //     let requestMethod = requestModel[methodName];
+    //     if (requestMethod === null) {
+    //       supertest(app)
+    //         [methodName](path)
+    //         .expect(404, done);
+    //     } else if (requestMethod.params.request) {
+    //       // console.log("this iteration has defined request parameters");
+    //       if (requestMethod.params.request.key) {
+    //         // if request has a single key in url
+    //         if (requestMethod.params.request.type === "number") {
+    //           // and if the request type is a number
+    //           supertest(app)
+    //             [methodName](
+    //               path.replace(
+    //                 `:${requestMethod.params.request.key}`,
+    //                 "abcdefg"
+    //               )
+    //             )
+    //             .end((err, req) => {
+    //               expect(req.statusCode).toBe(
+    //                 400,
+    //                 `${methodName.toUpperCase()} ${path}`
+    //               );
+    //               // eventually you should test the response format+
+    //               console.warn(
+    //                 "WARNING: " +
+    //                   methodName.toUpperCase() +
+    //                   ":" +
+    //                   path +
+    //                   ": the error response format for type number is not being tested yet"
+    //               );
+    //               done();
+    //             });
+    //           // done();
+    //           continue;
+    //         } else if (requestMethod.params.request.type === "string") {
+    //           // intentionally send a known bad request to the request handler
+    //           supertest(app)
+    //             [methodName](
+    //               path.replace(
+    //                 `:${requestMethod.params.request.key}`,
+    //                 Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
+    //               )
+    //             )
+    //             .end((err, res) => {
+    //               console.log(response);
+    //               if (err) {
+    //                 done(err);
+    //               } else {
+    //                 expect(res.statusCode).toBe(400);
+    //                 // make sure to test the response format
+    //                 console.warn(
+    //                   methodName.toUpperCase() +
+    //                     ":" +
+    //                     path +
+    //                     ": the response format for type string is not being tested"
+    //                 );
+    //                 done();
+    //               }
+    //             });
+    //         }
+    //       }
+    //     } else if (requestMethod.params.query) {
+    //       console.log(
+    //         "request method query params",
+    //         requestMethod.params.query
+    //       );
+    //       console.info(
+    //         "****tests for requestMethod.params.query have not been implemented yet****\r\n"
+    //       );
+    //       done();
+    //     }
 
-        // supertest(app)[method](path);
-      }
-      done();
-    });
+    //     // supertest(app)[method](path);
+    //   }
+    //   done();
+    // });
   }
 });
