@@ -1,5 +1,4 @@
 const model = require("../../../../lib/src/models/product");
-const modelInfo = model.modelInfo;
 const data = require("../data.json");
 module.exports = {
   controller: function getOne(req, res) {
@@ -7,13 +6,13 @@ module.exports = {
       // if the parameter is missing from the request
       // return 422 (unproccessable entity)
       res.sendStatus(422);
-    } else if (!modelInfo.id.format.test(req.params.id)) {
+    } else if (!model.id.format.test(req.params.id)) {
       // the parameter was provided, but the type or format was incorrect
       res.sendStatus(400);
     } else if (req.params.id < modelInfo.id.min) {
       // the given input was out of range
       res.sendStatus(400);
-    } else if (req.params.id >= modelInfo.id.max - 1) {
+    } else if (req.params.id >= modelInfo.id.max) {
       // the given input was out of range
       res.sendStatus(400);
     } else {
