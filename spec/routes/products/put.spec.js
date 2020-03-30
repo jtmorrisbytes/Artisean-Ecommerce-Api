@@ -69,7 +69,7 @@ describe("Products Router PUT api/product/", () => {
         }
         let newData = {
           ...testData,
-          name: "abc123ThatsWhatITMeansTOMe",
+          name: "ThatsWhatITMeansTOMe",
           description: "LOREmIpSUm",
           price: Math.random() * 50
         };

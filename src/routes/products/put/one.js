@@ -1,3 +1,4 @@
+const model = require("../../../../lib/src/models/product");
 module.exports = {
   controller: function updateOne(req, res) {
     if (!req.get("Content-Type").includes("application/json")) {
@@ -17,6 +18,18 @@ module.exports = {
       res.status(400).json({
         data: {},
         error: { description: "missing property 'id' in request", params: "id" }
+      });
+    } else if (
+      req.body.name != null &&
+      !model.name.format.test(req.body.name)
+    ) {
+      res.status(400).json({
+        data: {},
+        error: {
+          type: "TypeError",
+          description: "property name has an invalid format",
+          format: model.name.format.toString()
+        }
       });
     }
     for (let i = 0; i < this.data.length; i++) {

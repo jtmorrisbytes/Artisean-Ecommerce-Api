@@ -74,11 +74,7 @@ router.get(
 );
 // this route is expecting query params
 router.get(basePathPlural, products.get.filter.controller);
-router.post(
-  basePath + "/" + products.post.one.params.request,
-  validateID,
-  products.post.one.controller
-);
+router.post(basePath, products.post.one.controller);
 router.put(basePath + "/:id", products.put.one.controller.bind({ data }));
 router.delete(
   basePath + "/" + products.del.params.request,
