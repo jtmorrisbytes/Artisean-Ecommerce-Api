@@ -1,4 +1,5 @@
 // do processing here
+const bodyParser = require("body-parser");
 const basePath = "/product";
 const basePathPlural = basePath + "s";
 const router = require("express").Router();
@@ -36,7 +37,6 @@ function validateID(req, res, next) {
       }
     });
   } else if (+req.params.id < model.id.min || req.params.id >= model.id.max) {
-    console.log("GetOne req.params.id was less than the min");
     // the given input was out of range
     res.status(400).json({
       data: {},
@@ -53,7 +53,20 @@ function validateID(req, res, next) {
   }
 }
 
-router.get(basePathPlural, products.get.all.controller.bind({ data: data }));
+router.use(bodyParser.json());
+
+// router.use((req, res, next) => {
+//   if (!req.get("Content-Type").includes("application/json")) {
+//     res.status(400).send({
+//       data: {},
+//       error: {
+//         type: "InvalidContentType",
+//         description: "This endpoint only accepts application/json"
+//       }
+//     });
+//   } else next();
+// });
+router.get(basePathPlural, products.get.all.controller.bind({ data }));
 router.get(
   basePath + "/" + products.get.one.params.request,
 
@@ -66,6 +79,7 @@ router.post(
   validateID,
   products.post.one.controller
 );
+router.put(basePath + "/:id", products.put.one.controller.bind({ data }));
 router.delete(
   basePath + "/" + products.del.params.request,
   validateID,
