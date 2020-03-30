@@ -11,6 +11,13 @@ const products = {
   put: require("./put"),
   del: require("./delete")
 };
+let id = 0;
+// find the highest id in the data set for test purposes
+for (let index = 0; index < data.length; index++) {
+  if (data[index].id > id) {
+    id = data[index].id;
+  }
+}
 
 function validateID(req, res, next) {
   if (!req.params.id) {
@@ -55,17 +62,21 @@ function validateID(req, res, next) {
 
 router.use(bodyParser.json());
 
-// router.use((req, res, next) => {
-//   if (!req.get("Content-Type").includes("application/json")) {
-//     res.status(400).send({
-//       data: {},
-//       error: {
-//         type: "InvalidContentType",
-//         description: "This endpoint only accepts application/json"
-//       }
-//     });
-//   } else next();
-// });
+// im attempting to use a middleware function to
+// pass the required data and id to the route handlers
+// instead of using bound functions, because I found
+// the latter to be problematic
+router.use((req, res, next) => {
+  res.locals.data = data;
+  res.locals.incrementId = () => {
+    id++;
+  };
+  res.locals.pushData = newData => {
+    data.push(newData);
+  };
+  res.locals.id = id;
+  next();
+});
 router.get(basePathPlural, products.get.all.controller.bind({ data }));
 router.get(
   basePath + "/" + products.get.one.params.request,
@@ -75,11 +86,14 @@ router.get(
 // this route is expecting query params
 router.get(basePathPlural, products.get.filter.controller);
 router.post(basePath, products.post.one.controller);
-router.put(basePath + "/:id", products.put.one.controller.bind({ data }));
+router.put(
+  basePath + "/:id",
+  products.put.one.controller.bind({ data: data, id: id })
+);
 router.delete(
   basePath + "/" + products.del.params.request,
   validateID,
-  products.del.controller.bind({ data: data })
+  products.del.controller
 );
 module.exports = {
   router,

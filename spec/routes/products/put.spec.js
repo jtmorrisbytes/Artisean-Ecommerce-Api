@@ -67,10 +67,11 @@ describe("Products Router PUT api/product/", () => {
             testData = data[i];
           }
         }
+
         let newData = {
           ...testData,
-          name: "ThatsWhatITMeansTOMe",
-          description: "LOREmIpSUm",
+          name: "Thats What IT Means TO Me",
+          description: "LO RE. mIpSUm",
           price: Math.random() * 50
         };
         supertest(app)
@@ -80,8 +81,7 @@ describe("Products Router PUT api/product/", () => {
           .send(newData)
           .expect(200, (err, res) => {
             if (err) done(err);
-
-            expect(res.body.data).toEqual(newData);
+            expect(res.body.data).toEqual(newData, res.body.data);
             done();
           });
         // done();

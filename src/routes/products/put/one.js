@@ -46,7 +46,6 @@ module.exports = {
         res.json({ data: newData });
       }
     }
-    console.log("updateOne");
   },
   params: {
     req: ":id",

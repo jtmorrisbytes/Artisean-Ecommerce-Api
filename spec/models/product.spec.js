@@ -178,9 +178,7 @@ describe("Products", () => {
         //   responseModel[requestMethod].__proto__.constructor ===
         //     {}.__proto__.constructor
         // ).toBeTrue();
-        console.groupEnd();
       }
-      console.log("");
       done();
     });
     // it(`should have the correct response for ${path}`, done => {

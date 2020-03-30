@@ -2,13 +2,13 @@ module.exports = {
   controller: function deleteProduct(req, res) {
     for (
       let productIndex = 0;
-      productIndex < this.data.length;
+      productIndex < res.locals.data.length;
       productIndex++
     ) {
-      let product = this.data[productIndex];
+      let product = res.locals.data[productIndex];
       if (product.id == req.params.id) {
-        this.data.splice(productIndex, 1);
-        res.json({ data: this.data });
+        res.locals.data.splice(productIndex, 1);
+        res.json({ data: res.locals.data });
       }
     }
     res.status(404).json({
@@ -18,7 +18,7 @@ module.exports = {
         param: "id",
         id: req.params.id
       },
-      data: this.data || []
+      data: this.res.locals.data
     });
   },
   params: {
