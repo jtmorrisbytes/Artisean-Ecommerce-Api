@@ -39,8 +39,8 @@ for (route in routes) {
 }
 
 if (!config.NODE_ENV.includes("test")) {
-  app.listen(config.port, config.host, () => {
-    console.log(`READY ON ${config.host}:${config.port}`);
+  app.listen(config.PORT, config.HOST, () => {
+    console.log(`READY ON ${config.HOST}:${config.PORT}`);
   });
 }
 
