@@ -19,20 +19,21 @@ class Products extends Component {
   state = {
     products: [],
     limit: 0,
-    priceMin: null,
-    priceMax: null,
+    p_ge: 0,
+    p_le: 999.99,
     name: "",
 
     sp: this.P_ASC,
     sn: this.N_ASC,
     enableActions: true
   };
-  updateHistory = ({ name, sp, sn, priceMin, priceMax, limit, ...rest }) => {
+  updateHistory = ({ name, sp, sn, p_ge, p_le, limit, ...rest }) => {
     this.props.history.replace(
-      `${this.props.history.location.pathname}?name=${name ||
-        ""}&limit=${limit || this.state.limit || 0}&sp=${sp ||
-        this.state.sp ||
-        this.P_ASC}`
+      `${this.props.history.location.pathname}?name=${this.state.name ||
+        ""}&limit=${this.state.limit || 0}&sp=${this.state.sp ||
+        this.P_ASC}&p_le=${p_le || this.state.p_le || 999.99}&p_ge=${p_ge ||
+        this.state.p_ge ||
+        0}`
     );
   };
   addToCart = id => {
@@ -59,13 +60,15 @@ class Products extends Component {
       limit: params.get("limit") || 0,
       sp: params.get("sp"),
       sn: params.get("sn"),
-      priceMax: params.get("priceMax"),
-      priceMin: params.get("priceMin")
+      p_le: params.get("p_le"),
+      p_ge: params.get("p_ge")
     };
   }
   getProducts = () => {
     let params = this.getSearchParams();
-    Axios.get(`/api/products?name=${params.name}`)
+    Axios.get(
+      `/api/products?name=${params.name}&p_le=${params.p_le}&p_ge${params.p_ge}`
+    )
       .then(res => {
         if (res.data.data) {
           this.setState({ products: res.data.data });
@@ -79,6 +82,10 @@ class Products extends Component {
     this.updateHistory({ name: e.target.value });
     console.log(e.charCode, e.key, String.fromCharCode(e.keyCode));
     // this.setState({ name: e.target.value });
+  };
+  handlePriceChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+    this.updateHistory({ [e.target.name]: e.target.value });
   };
   deleteItem = id => {
     this.setState({ enableActions: false });
@@ -98,6 +105,8 @@ class Products extends Component {
     let params = this.getSearchParams();
     this.setState({
       name: params.name || this.state.name,
+      p_ge: params.p_ge || this.state.p_ge,
+      p_ge: params.p_ge || this.state.p_ge,
       limit: params.limit || this.state.limit
     });
     this.getProducts();
@@ -139,6 +148,9 @@ class Products extends Component {
         <SearchFilter
           name={this.state.name}
           handleNameChange={this.handleNameChange}
+          p_ge={this.state.p_ge}
+          p_le={this.state.p_le}
+          handlePriceChange={this.handlePriceChange}
         />
         <Listing products={displayProducts} />
       </main>

@@ -9,16 +9,19 @@ function SearchFilter(props) {
       <div className="price">
         <h4>Price</h4>
         <input
-          value={props.min}
-          onChange={props.handlePriceFilterChange}
+          value={props.priceMin}
+          onChange={props.handlePriceChange}
           type="number"
           name="p_ge"
+          min="0"
           placeholder="min"
         />
         <input
-          value={props.max}
-          onChange={props.handlePriceFilterChange}
+          value={props.priceMax}
+          onChange={props.handlePriceChange}
+          type="number"
           name="p_le"
+          min="0"
           placeholder="max"
         />
       </div>

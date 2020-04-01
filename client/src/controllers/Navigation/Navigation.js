@@ -3,7 +3,7 @@ import "./Navigation.css";
 import { Link } from "react-router-dom";
 const Navigation = props => {
   return (
-    <nav id="Navigation">
+    <nav className="Navigation">
       <div className="nav-links">
         <Link to="/home">HOME</Link>
         <Link to="/products">PRODUCTS</Link>

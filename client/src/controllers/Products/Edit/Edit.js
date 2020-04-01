@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Axios from "axios";
+import "./Edit.css";
 class Edit extends Component {
   constructor(props) {
     super(props);

@@ -2,11 +2,23 @@ nav.Navigation {
   /* grid-row: var(--Nav-row-start) / var(--Nav-row-end);
   grid-column: col-start / col-16; */
   /* display: contents; */
-  grid-template-areas: navigation;
+  display: flex;
+  justify-items: space-around;
+  flex-direction: row;
+  grid-area: navigation;
+}
+.nav-links,
+.cart-avatar {
+  display: flex;
+  font-size: 200%;
+  align-items: center;
 }
 .nav-links {
-  grid-area: nav-links;
+  /* grid-area: nav-links; */
+  justify-content: space-evenly;
+
+  width: 70%;
 }
 .cart-avatar {
-  display: none;
+  /* display: none; */
 }
