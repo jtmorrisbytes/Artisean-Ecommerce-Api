@@ -1,0 +1,32 @@
+@import "../../../breakpoints.scss";
+.Listing {
+  display: grid;
+  grid-area: listing;
+  grid-row-start: 2;
+  grid-template-columns: 1fr;
+  // grid-area: main;
+  // column-gap: $col-gutter;
+  row-gap: $row-gutter;
+  // align-items: center;
+  // justify-items: center;
+  /* flex-direction: row; */
+}
+// }
+// @media screen and (min-width: $break-sm) {
+// }
+// @media screen and (min-width: $break-md) {
+//   .Listing {
+//     overflow: scroll;
+//     grid-template-columns: 1fr 1fr;
+//   }
+// }
+@media screen and (min-width: $break-lg) {
+  .Listing {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+// @media screen and (min-width: $break-xxl) {
+//   .Listing {
+//     grid-template-columns: 1fr 1fr 1fr 1fr;
+//   }
+// }

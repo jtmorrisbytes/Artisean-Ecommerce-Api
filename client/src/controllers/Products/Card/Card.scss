@@ -1,0 +1,90 @@
+@import "../../../breakpoints.scss";
+.Card {
+  // max-width: 150px;
+  // grid-area: main;
+  margin: 0;
+  // width: 80%;
+  // margin-left: auto;
+  // margin-right: auto;
+  display: grid;
+  max-height: 750px;
+  grid-template-areas:
+    "i"
+    "n"
+    "p"
+    "d"
+    "a"
+    "e"
+    "del";
+  grid-template-columns: 80%;
+  border: 1px solid white;
+  grid-template-rows: auto 1fr 1fr 2fr 2fr 2fr 2fr;
+  box-shadow: 0px 3px 2px black;
+  border-top: 1px solid black;
+  // width: 100%;
+  img {
+    grid-area: ig;
+    width: 100%;
+    // max-width: 200px;
+    height: auto;
+  }
+  .name {
+    grid-area: nm;
+    font-size: 1.1em;
+    word-wrap: wrap;
+  }
+  .description {
+    grid-area: dc;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    max-height: 300px;
+  }
+  .contents {
+    grid-area: content;
+  }
+  .add {
+    grid-area: ad;
+  }
+  .edit {
+    grid-area: ed;
+  }
+  .delete {
+    grid-area: dl;
+  }
+  .price {
+    grid-area: pr;
+  }
+}
+
+@media screen and (min-width: $break-sm) {
+  .Card {
+    grid-template-areas:
+      "ig ig ig ig nm nm nm nm nm nm nm nm nm"
+      "ig ig ig ig pr pr pr pr pr pr pr pr pr"
+      "ig ig ig ig pr pr pr pr pr pr pr pr pr"
+      "dc dc dc dc dc dc dc dc dc dc dc dc dc"
+      "ad ad ad ad ad ad ad ad ad ad ad ad ad"
+      "ed ed ed ed ed ed ed ed ed ed ed ed ed"
+      "dl dl dl dl dl dl dl dl dl dl dl dl dl";
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+@media screen and (min-width: $break-md) {
+  .Card {
+    // width: 80%;
+    // max-width: 200px;
+    // flex-direction: column;
+  }
+}
+@media screen and (min-width: $break-md) {
+  .Card {
+    grid-template-areas:
+      "ig ig ig ig nm nm nm nm nm nm nm nm"
+      "ig ig ig ig pr pr pr pr pr pr pr pr"
+      "ig ig ig ig pr pr pr pr pr pr pr pr"
+      "dc dc dc dc dc dc dc dc dc dc dc dc"
+      "ad ad ad ad ed ed ed ed dl dl dl dl";
+    grid-template-rows: 3fr 3fr 3fr 5fr 2fr;
+  }
+}

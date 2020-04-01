@@ -1,0 +1,6 @@
+.Search > * {
+  height: 100%;
+}
+.Search > input {
+  width: 85%;
+}

@@ -1,0 +1,12 @@
+nav.Navigation {
+  /* grid-row: var(--Nav-row-start) / var(--Nav-row-end);
+  grid-column: col-start / col-16; */
+  /* display: contents; */
+  grid-template-areas: navigation;
+}
+.nav-links {
+  grid-area: nav-links;
+}
+.cart-avatar {
+  display: none;
+}

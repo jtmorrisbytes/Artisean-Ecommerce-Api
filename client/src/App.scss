@@ -1,0 +1,66 @@
+@import "./normalize/normalize-scss-7.0.1/sass/normalize";
+@import "breakpoints";
+// @import "./controllers/Header/Header.scss";
+@import "./controllers/Home/Home.scss";
+@import "./controllers/Products/Products.scss";
+@import "./controllers/Navigation/Navigation.css";
+
+html {
+  --break-xs: $break-xs;
+  --break-s: $break-sm;
+  --break-m: $break-md;
+  --break-l: $break-lg;
+  --break-xl: $break-xl;
+  --break-xxl: $break-xxl;
+  --Header-row-start: 0;
+  --Header-row-end: 1;
+  --Header-height: 200px;
+  --Root-grid-columns: [single-col] auto;
+  --Content-row-start: 4;
+  /* min-width: 50px; */
+  box-sizing: content-box;
+  // font-size: 120%;
+}
+.App {
+  max-width: $break-xxl;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-areas:
+    "brand-img"
+    "navigation"
+    "search-bar"
+    "main"
+    "footer";
+  /* grid-template-rows: auto; */
+  grid-auto-rows: 40vw 2em 2em auto 100px;
+  grid-template-columns: 100vw;
+
+  row-gap: $row-gutter;
+  column-gap: $col-gutter;
+
+  min-height: 100vh;
+}
+@media screen and (min-width: $break-xs) {
+}
+
+@media screen and (min-width: $break-sm) {
+  .App {
+  }
+}
+@media screen and (min-width: $break-md) {
+  .App {
+    grid-template-areas:
+      "brand-img navigation"
+      "search-bar search-bar"
+      "main main";
+
+    // grid-template-rows: ;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 100px 2em auto;
+  }
+}
+@media screen and (min-width: $break-lg) {
+  .App {
+  }
+}

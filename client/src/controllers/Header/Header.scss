@@ -1,0 +1,41 @@
+@import "../../breakpoints";
+html {
+  --Brand-img-row-start: 0;
+  --Brand-img-row-end: 1;
+  --Nav-row-start: var(--Brand-img-row-end);
+  --Nav-row-end: calc(var(--Nav-row-start) + 1);
+  --Search-row-start: calc(var(--Nav-row-end));
+  --Search-row-end: calc(var(--Search-row-start) + 3);
+}
+.Header {
+  /* grid-row: var(--Header-row-start) / var(--Header-row-end); */
+  display: contents;
+  /* flex-direction: column; */
+  /* grid-template-columns: 1fr;
+  grid-template-rows: 2fr 1fr 1fr; */
+}
+.Header .brand-img {
+  grid-area: brand-img;
+  width: 100%;
+  /* max-width: 200px; */
+  height: auto;
+  /* max-height: ; */
+}
+.Search {
+  /* grid-row: var(--Search-row-start) / var(--Search-row-end); */
+  /* grid-column: col-start / col-16; */
+  grid-area: search-bar;
+}
+@media screen and (min-width: $break-xs) {
+}
+@media screen and (min-width: $break-sm) {
+}
+@media screen and (min-width: $break-md) {
+}
+@media screen and (min-width: $break-lg) {
+}
+
+@media screen and (min-width: $break-xl) {
+}
+@media screen and (min-width: $break-xxl) {
+}
