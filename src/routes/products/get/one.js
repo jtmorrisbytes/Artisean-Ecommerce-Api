@@ -10,13 +10,14 @@ module.exports = {
         data: {},
         error: {
           type: "NotFoundError",
-          errorDescripton: "The object with the requested id was not found",
+          description: `The product with the requested id '${req.params.id}' was not found`,
           param: "id",
           id: req.params.id
         }
       });
+    } else {
+      res.json({ data: result });
     }
-    res.json({ data: result });
   },
   params: {
     request: ":id",
