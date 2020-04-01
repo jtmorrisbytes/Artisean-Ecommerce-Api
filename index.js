@@ -3,8 +3,9 @@ const express = require("express");
 const path = require("path");
 const morgan = require("morgan");
 const app = express();
-
-if (config.NODE_ENV === "production") {
+if (config.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+} else if (config.NODE_ENV === "production") {
   app.use(morgan("tiny"));
 } else if (config.DEBUG === true || process.env.DEBUG === true) {
   app.use(morgan("dev"));

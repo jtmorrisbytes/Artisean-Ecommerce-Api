@@ -9,7 +9,29 @@ const baseModel = require("../../../../lib/src/models/product");
 // this function has had the this keyword explicitly
 // bound where this.data = the data in the parent controller
 function getAll(req, res) {
-  res.json({ data: this.data });
+  let { name, minPrice, maxPrice, sp, sn, limit } = req.query;
+  console.log(req.query);
+  let result = res.locals.data;
+  if (name) {
+    result = res.locals.data.filter(product => {
+      return new RegExp(`${name}`, "i").test(product.name);
+    });
+  }
+  if (minPrice && maxPrice) {
+    result = result.filter(product => {
+      return product.price >= minPrice && product.price <= maxPrice;
+    });
+  } else if (minPrice && !maxPrice) {
+    result = result.filter(product => {
+      return product.price >= minPrice;
+    });
+  } else if (maxPrice && !minPrice) {
+    result = result.filter(product => {
+      return product.price <= maxPrice;
+    });
+  }
+
+  res.json({ data: result });
 }
 module.exports = {
   controller: getAll,
