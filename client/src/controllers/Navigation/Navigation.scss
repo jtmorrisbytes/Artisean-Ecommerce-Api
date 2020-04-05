@@ -1,10 +1,14 @@
+@import "../../breakpoints.scss";
 nav.Navigation {
   /* grid-row: var(--Nav-row-start) / var(--Nav-row-end);
   grid-column: col-start / col-16; */
   /* display: contents; */
   display: flex;
+
   justify-items: space-around;
   flex-direction: row;
+  margin-bottom: $row-gutter;
+
   grid-area: navigation;
 }
 .nav-links,
@@ -21,4 +25,11 @@ nav.Navigation {
 }
 .cart-avatar {
   /* display: none; */
+}
+@media only screen and (min-width: $break-sm) {
+  .Navigation {
+    height: 120px;
+    float: right;
+    width: calc(100% - #{$col-width} - #{$col-gutter});
+  }
 }

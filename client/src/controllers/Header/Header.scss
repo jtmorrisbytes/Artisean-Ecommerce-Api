@@ -20,15 +20,21 @@ html {
   /* max-width: 200px; */
   height: auto;
   /* max-height: ; */
+  margin-bottom: $row-gutter;
 }
 .Search {
-  /* grid-row: var(--Search-row-start) / var(--Search-row-end); */
-  /* grid-column: col-start / col-16; */
-  grid-area: search-bar;
+  margin-bottom: $row-gutter;
+  height: $row-gutter * 2;
 }
 @media screen and (min-width: $break-xs) {
 }
 @media screen and (min-width: $break-sm) {
+  .Header .brand-img {
+    width: $col-width;
+    // margin-bottom: 0;
+  }
+  .Header .Navigation {
+  }
 }
 @media screen and (min-width: $break-md) {
 }

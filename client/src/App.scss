@@ -1,9 +1,6 @@
 @import "./normalize/normalize-scss-7.0.1/sass/normalize";
 @import "breakpoints";
 // @import "./controllers/Header/Header.scss";
-@import "./controllers/Home/Home.scss";
-@import "./controllers/Products/Products.scss";
-@import "./controllers/Navigation/Navigation.css";
 
 html {
   /* min-width: 50px; */
@@ -17,8 +14,9 @@ html {
   margin-right: auto;
   // display: grid;
   max-width: $content-width;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-top: $row-gutter;
+  padding-left: $col-gutter;
+  padding-right: $col-gutter;
   background-color: red;
   row-gap: $row-gutter;
   column-gap: $col-gutter;
