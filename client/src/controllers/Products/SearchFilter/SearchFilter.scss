@@ -2,8 +2,15 @@
 .SearchFilter {
   // height: 100px;
   // width: 100%;
+  position: sticky;
   border: 1px solid black;
-  grid-area: searchfilter;
-  width: $col-width;
+  // grid-area: searchfilter;
+  width: 100%;
   margin-right: $col-gutter;
+}
+
+@media only screen and (min-width: $break-md) {
+  .SearchFilter {
+    width: $col-width;
+  }
 }
