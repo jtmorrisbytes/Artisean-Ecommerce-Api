@@ -1,27 +1,14 @@
 @import "../../../breakpoints.scss";
-$cardHeight-xs: $col-width / 4;
-$cardWidthRatio-xs: 3;
-$cardWidth-xs: $cardHeight-xs * $cardWidthRatio-xs;
-$gutter-xs: ($cardHeight-xs * 0.01);
-$imgHeight-xs: $cardHeight-xs - ($gutter-xs * 2);
-//
-$cardWidthRatio-sm: 0.75;
-$cardWidth-sm: $col-width * $cardWidthRatio-sm;
-$cardHeightRatio-sm: 2;
-$cardHeight-sm: $cardWidth-sm * $cardHeightRatio-sm;
 
+$padding: 2%;
+$img-base-width: 50px;
 .Card {
   // max-width: 150px;
   // grid-area: main;
-  padding: $gutter-xs;
+  // position: static;
+  padding: 2%;
 
   width: 100%;
-  // max-width: $cardWidthRatio-xs * $cardWidthRatio-xs - ($col-gutter * 2);
-  // max-width: $break-xs;
-  // margin-left: auto;
-  // margin-right: auto;
-  // height: $cardHeight-xs;
-  // max-height: 500px;
   border: 1px solid white;
   box-shadow: 0px 3px 2px black;
   border-top: 1px solid grey;
@@ -33,15 +20,21 @@ $cardHeight-sm: $cardWidth-sm * $cardHeightRatio-sm;
 
   img {
     grid-area: ig;
-    width: $imgHeight-xs;
+    width: 100% - $padding;
     // max-width: 200px;
     margin: auto 0;
-    height: $imgHeight-xs;
+    display: inline;
+    // margin-right: 2%;
+    // float: left;
+    height: auto;
+    // height: $imgHeight-xs;
   }
   .name {
+    // float: right;
     grid-area: nm;
     font-size: 1.1em;
     word-wrap: wrap;
+    display: inline;
   }
   .description {
     grid-area: dc;
@@ -66,14 +59,25 @@ $cardHeight-sm: $cardWidth-sm * $cardHeightRatio-sm;
   }
 }
 
-@media screen and (min-width: $break-sm) {
+@media screen and (min-width: $break-xs) {
   .Card {
+    img {
+      margin: 0 auto;
+    }
+    .name {
+      font-size: 175%;
+    }
+    .price {
+      font-size: 125%;
+    }
     // flex-direction: column;
     // width: $cardWidth-sm;
     // height: $cardHeight-sm;
-  }
-  .price {
-    // left: ($imgWidth + $col-gutter + 200px + 17px);
+    // img {
+    //   width: $img-base-width * 2;
+    //   height: auto;
+    // }
+    max-width: $col-width - $col-gutter;
   }
 }
 @media screen and (min-width: $break-md) {
