@@ -6,9 +6,10 @@ $numColumns: 6;
 $col-width: ($content-width - ($col-gutter * ($numColumns - 1))) / $numColumns;
 @debug $col-width;
 // one column
-$break-xs: $col-width;
+$break-xs: $col-width + $col-gutter + $col-gutter;
 // two columns
-$break-sm: $col-width * 2;
+$break-sm: $col-width * 2 + $col-gutter + $col-gutter + $col-gutter +
+  $col-gutter + 6px;
 // three columns
 $break-md: $col-width * 3;
 // four columns
