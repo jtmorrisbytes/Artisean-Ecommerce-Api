@@ -35,6 +35,8 @@ html {
   /* grid-template-rows: auto; */
   grid-auto-rows: 40vw 2em 2em auto 100px;
   grid-template-columns: 100vw;
+  padding-left: 1em;
+  padding-right: 1em;
 
   row-gap: $row-gutter;
   column-gap: $col-gutter;

@@ -1,4 +1,5 @@
 {
   "controllersDir": "./src/controllers",
-  "routesDir": "./src/routes"
+  "routesDir": "./src/routes",
+  "staticDir": "./client/build"
 }

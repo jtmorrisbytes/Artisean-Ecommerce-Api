@@ -10,14 +10,16 @@ if (config.NODE_ENV === "development") {
 } else if (config.DEBUG === true || process.env.DEBUG === true) {
   app.use(morgan("dev"));
 }
+console.debug(`serving static files at ${config.staticDir}`);
+app.use(express.static(config.staticDir));
 console.debug("app recieved config object", config);
 console.info("Mounting information route for api");
 app.get(config.apiBasePath, (req, res) => {
   res.json({
     info: {
       name: "Artesian Ecommerce api",
-      version: "0.0.1"
-    }
+      version: "0.0.1",
+    },
   });
 });
 

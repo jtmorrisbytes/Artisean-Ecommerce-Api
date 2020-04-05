@@ -1,4 +1,5 @@
 @import "../../../breakpoints.scss";
+$CardHeight: 100px;
 .Card {
   // max-width: 150px;
   // grid-area: main;
@@ -7,12 +8,12 @@
   // margin-left: auto;
   // margin-right: auto;
   display: grid;
-  max-height: 750px;
+  height: $CardHeight;
+  // max-height: 500px;
   grid-template-areas:
     "i"
     "n"
     "p"
-    "d"
     "a"
     "e"
     "del";
@@ -24,9 +25,10 @@
   // width: 100%;
   img {
     grid-area: ig;
-    width: 100%;
+    width: auto;
     // max-width: 200px;
     height: auto;
+    max-height: $CardHeight;
   }
   .name {
     grid-area: nm;
@@ -59,15 +61,12 @@
 @media screen and (min-width: $break-sm) {
   .Card {
     grid-template-areas:
-      "ig ig ig ig nm nm nm nm nm nm nm nm nm"
-      "ig ig ig ig pr pr pr pr pr pr pr pr pr"
-      "ig ig ig ig pr pr pr pr pr pr pr pr pr"
-      "dc dc dc dc dc dc dc dc dc dc dc dc dc"
-      "ad ad ad ad ad ad ad ad ad ad ad ad ad"
-      "ed ed ed ed ed ed ed ed ed ed ed ed ed"
-      "dl dl dl dl dl dl dl dl dl dl dl dl dl";
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      "ig nm nm nm"
+      "ig pr pr pr"
+      "ig .  .  . "
+      "ig ad ed dl";
+    grid-template-rows: 50px 50px auto 20px;
+    grid-template-columns: $CardHeight 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   }
 }
 @media screen and (min-width: $break-md) {
