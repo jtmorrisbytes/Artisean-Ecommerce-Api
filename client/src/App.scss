@@ -6,71 +6,61 @@
 @import "./controllers/Navigation/Navigation.css";
 
 html {
-  --break-xs: $break-xs;
-  --break-s: $break-sm;
-  --break-m: $break-md;
-  --break-l: $break-lg;
-  --break-xl: $break-xl;
-  --break-xxl: $break-xxl;
-  --Header-row-start: 0;
-  --Header-row-end: 1;
-  --Header-height: 200px;
-  --Root-grid-columns: [single-col] auto;
-  --Content-row-start: 4;
   /* min-width: 50px; */
-  box-sizing: content-box;
+  box-sizing: border-box;
   // font-size: 120%;
+  // max-width: $max-width;
+  // min-width: $break-xs + $col-gutter * 2;
 }
 .App {
-  max-width: $break-xxl;
   margin-left: auto;
   margin-right: auto;
-  display: grid;
-  grid-template-areas:
-    "brand-img"
-    "navigation"
-    "search-bar"
-    "main"
-    "footer";
-  /* grid-template-rows: auto; */
-  grid-auto-rows: 40vw 2em 2em auto 100px;
-  grid-template-columns: 100vw;
+  // display: grid;
+  max-width: $content-width;
   padding-left: 1em;
   padding-right: 1em;
-
+  background-color: red;
   row-gap: $row-gutter;
   column-gap: $col-gutter;
 
   min-height: 100vh;
 }
 @media screen and (min-width: $break-xs) {
+  .App {
+    background-color: orange;
+  }
 }
-
+// two columns
 @media screen and (min-width: $break-sm) {
   .App {
-    grid-template-areas:
-      "brand-img navigation"
-      "search-bar search-bar"
-      "main main";
-
-    // grid-template-rows: ;
-    grid-template-columns: 200px 1fr;
-    grid-template-rows: 100px 2em auto;
+    background-color: yellow;
   }
 }
-@media screen and (min-width: $break-lg) {
+// three columns
+@media screen and (min-width: $break-md) {
   .App {
-    grid-template-areas:
-      "brand-img navigation navigation"
-      "search-bar search-bar search-bar"
-      "main main main";
-
-    // grid-template-rows: ;
-    grid-template-columns: 200px 1fr 1fr;
-    grid-template-rows: 100px 2em auto;
+    background-color: green;
   }
 }
+// four columns
 @media screen and (min-width: $break-lg) {
   .App {
+    background-color: blue;
+  }
+}
+// five columns
+@media screen and (min-width: $break-xl) {
+  .App {
+    background-color: indigo;
+  }
+}
+@media screen and (min-width: $break-xxl) {
+  .App {
+    background-color: violet;
+  }
+}
+@media screen and (min-width: $break-hd) {
+  .App {
+    background-color: grey;
   }
 }

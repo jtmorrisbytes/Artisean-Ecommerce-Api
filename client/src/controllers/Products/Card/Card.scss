@@ -1,34 +1,42 @@
 @import "../../../breakpoints.scss";
-$CardHeight: 100px;
+$cardHeight-xs: $col-width / 4;
+$cardWidthRatio-xs: 3;
+$cardWidth-xs: $cardHeight-xs * $cardWidthRatio-xs;
+$gutter-xs: ($cardHeight-xs * 0.01);
+$imgHeight-xs: $cardHeight-xs - ($gutter-xs * 2);
+//
+$cardWidthRatio-sm: 0.75;
+$cardWidth-sm: $col-width * $cardWidthRatio-sm;
+$cardHeightRatio-sm: 2;
+$cardHeight-sm: $cardWidth-sm * $cardHeightRatio-sm;
+
 .Card {
   // max-width: 150px;
   // grid-area: main;
-  margin: 0;
-  // width: 80%;
+  padding: $gutter-xs;
+
+  width: 100%;
+  // max-width: $cardWidthRatio-xs * $cardWidthRatio-xs - ($col-gutter * 2);
+  // max-width: $break-xs;
   // margin-left: auto;
   // margin-right: auto;
-  display: grid;
-  height: $CardHeight;
+  // height: $cardHeight-xs;
   // max-height: 500px;
-  grid-template-areas:
-    "i"
-    "n"
-    "p"
-    "a"
-    "e"
-    "del";
-  grid-template-columns: 80%;
   border: 1px solid white;
-  grid-template-rows: auto 1fr 1fr 2fr 2fr 2fr 2fr;
   box-shadow: 0px 3px 2px black;
-  border-top: 1px solid black;
-  // width: 100%;
+  border-top: 1px solid grey;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
   img {
     grid-area: ig;
-    width: auto;
+    width: $imgHeight-xs;
     // max-width: 200px;
-    height: auto;
-    max-height: $CardHeight;
+    margin: auto 0;
+    height: $imgHeight-xs;
   }
   .name {
     grid-area: nm;
@@ -60,13 +68,12 @@ $CardHeight: 100px;
 
 @media screen and (min-width: $break-sm) {
   .Card {
-    grid-template-areas:
-      "ig nm nm nm"
-      "ig pr pr pr"
-      "ig .  .  . "
-      "ig ad ed dl";
-    grid-template-rows: 50px 50px auto 20px;
-    grid-template-columns: $CardHeight 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    // flex-direction: column;
+    // width: $cardWidth-sm;
+    // height: $cardHeight-sm;
+  }
+  .price {
+    // left: ($imgWidth + $col-gutter + 200px + 17px);
   }
 }
 @media screen and (min-width: $break-md) {
@@ -74,16 +81,18 @@ $CardHeight: 100px;
     // width: 80%;
     // max-width: 200px;
     // flex-direction: column;
+    // margin-right: $col-gutter;
+    // width: $col-width * 2 - $col-gutter * 2;
   }
 }
 @media screen and (min-width: $break-md) {
-  .Card {
-    grid-template-areas:
-      "ig ig ig ig nm nm nm nm nm nm nm nm"
-      "ig ig ig ig pr pr pr pr pr pr pr pr"
-      "ig ig ig ig pr pr pr pr pr pr pr pr"
-      "dc dc dc dc dc dc dc dc dc dc dc dc"
-      "ad ad ad ad ed ed ed ed dl dl dl dl";
-    grid-template-rows: 3fr 3fr 3fr 5fr 2fr;
-  }
+  // .Card {
+  //   grid-template-areas:
+  //     "ig ig ig ig nm nm nm nm nm nm nm nm"
+  //     "ig ig ig ig pr pr pr pr pr pr pr pr"
+  //     "ig ig ig ig pr pr pr pr pr pr pr pr"
+  //     "dc dc dc dc dc dc dc dc dc dc dc dc"
+  //     "ad ad ad ad ed ed ed ed dl dl dl dl";
+  //   grid-template-rows: 3fr 3fr 3fr 5fr 2fr;
+  // }
 }

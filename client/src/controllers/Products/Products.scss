@@ -1,24 +1,13 @@
 @import "../../breakpoints.scss";
 .Products {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   grid-area: main;
-  grid-template-areas:
-    "searchfilter"
-    "listing";
-  grid-template-rows: 200px auto;
   column-gap: $col-gutter;
 }
 @media screen and (min-width: $break-md) {
   .Products {
-    grid-template-areas:
-      "searchfilter listing"
-      "searchfilter listing";
-    grid-template-columns: 200px 1fr;
-    overflow: scroll;
-    margin-top: -200px;
-  }
-  .SearchFilter {
-    margin-top: 200px;
+    flex-direction: row;
   }
 }
 @media screen and (min-width: 725px) {

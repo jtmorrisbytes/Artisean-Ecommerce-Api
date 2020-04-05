@@ -1,9 +1,20 @@
-$col-width: 200px;
 $col-gutter: 15px;
 $row-gutter: 15px;
+$max-width: 1920px;
+$content-width: $max-width - $col-gutter * 2;
+$numColumns: 6;
+$col-width: ($content-width - ($col-gutter * ($numColumns - 1))) / $numColumns;
+@debug $col-width;
+// one column
 $break-xs: $col-width;
-$break-sm: $break-xs + $col-width + $col-gutter;
-$break-md: $break-sm + $col-width + $col-gutter;
-$break-lg: $break-md + $col-width + $col-gutter;
-$break-xl: $break-lg + $col-width + $col-gutter;
-$break-xxl: $break-xl + $col-width + $col-gutter;
+// two columns
+$break-sm: $col-width * 2;
+// three columns
+$break-md: $col-width * 3;
+// four columns
+$break-lg: $col-width * 4;
+// 5 columns
+$break-xl: $col-width * 5;
+// 6 columns
+$break-xxl: $col-width * 6;
+$break-hd: $col-width * 7;

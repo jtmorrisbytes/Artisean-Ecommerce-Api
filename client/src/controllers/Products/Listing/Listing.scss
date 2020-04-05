@@ -2,31 +2,48 @@
 .Listing {
   display: grid;
   grid-area: listing;
-  grid-row-start: 2;
-  grid-template-columns: 1fr;
+  grid-template-columns: 100%;
   // grid-area: main;
   // column-gap: $col-gutter;
   row-gap: $row-gutter;
+  justify-items: center;
   // align-items: center;
   // justify-items: center;
   /* flex-direction: row; */
 }
 // }
-// @media screen and (min-width: $break-sm) {
-// }
-// @media screen and (min-width: $break-md) {
-//   .Listing {
-//     overflow: scroll;
-//     grid-template-columns: 1fr 1fr;
-//   }
-// }
-@media screen and (min-width: $break-lg) {
+
+@media screen and (min-width: $break-xs) {
   .Listing {
-    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    grid-template-columns: $col-width;
   }
 }
-// @media screen and (min-width: $break-xxl) {
-//   .Listing {
-//     grid-template-columns: 1fr 1fr 1fr 1fr;
-//   }
-// }
+
+@media screen and (min-width: $break-sm) {
+  .Listing {
+    column-gap: $col-gutter;
+    grid-template-columns: repeat(2, $col-width);
+  }
+}
+@media screen and (min-width: $break-md) {
+  .Listing {
+    // overflow: scroll;
+    // grid-template-columns: repeat(1, $col-width);
+  }
+}
+@media screen and (min-width: $break-lg) {
+  .Listing {
+    grid-template-columns: repeat(3, $col-width);
+  }
+}
+@media screen and (min-width: $break-xl) {
+  .Listing {
+    grid-template-columns: repeat(4, $col-width);
+  }
+}
+@media screen and (min-width: $break-xxl) {
+  .Listing {
+    grid-template-columns: repeat(5, $col-width);
+  }
+}
