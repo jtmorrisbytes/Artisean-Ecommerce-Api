@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Card from "./Card/Card";
 import "./Products.scss";
 import Axios from "axios";
-import Listing from "./Listing/Listing";
+// import Listing from "./Listing/Listing";
+import { Row, Col, Container } from "react-bootstrap";
 import SearchFilter from "./SearchFilter/SearchFilter";
 const defaultProduct = {
   name: "PRODUCT NAME",
@@ -26,6 +27,7 @@ class Products extends Component {
     sp: this.P_ASC,
     sn: this.N_ASC,
     enableActions: true,
+    numItemsPerRow: 3,
   };
   constructor(props) {
     super(props);
@@ -74,23 +76,31 @@ class Products extends Component {
     };
   }
   formatProducts(products) {
+    let displayProducts = [];
+    let row = [];
     for (let i = 0; i < products.length; i++) {
       // displayProducts.push(this.state.products[i])
-      let product = products[i] || {};
-      products[i] = (
-        <Card
-          key={i}
-          id={product.id}
-          name={product.name || defaultProduct.name}
-          description={product.description || defaultProduct.description}
-          price={product.price || defaultProduct.price}
-          addToCart={this.addToCart}
-          enableActions={this.state.enableActions}
-          deleteItem={this.deleteItem}
-        />
+      row.push(
+        <Col key={i}>
+          <Card
+            key={i}
+            name={defaultProduct.name}
+            description={defaultProduct.description}
+            price={defaultProduct.price}
+            {...this.state.products[i]}
+            addToCart={this.addToCart}
+            enableActions={this.state.enableActions}
+            deleteItem={this.deleteItem}
+          />
+        </Col>
       );
+      if (i % this.state.numItemsPerRow === 0) {
+        console.log("found beginning of row: i===", i);
+        displayProducts.push(<Row>{row}</Row>);
+        row = [];
+      }
     }
-    return products;
+    return displayProducts;
   }
   getProducts() {
     let params = this.getSearchParams();
@@ -156,7 +166,7 @@ class Products extends Component {
           p_le={this.state.p_le}
           handlePriceChange={this.handlePriceChange}
         />
-        <Listing products={this.state.products} />
+        <Container>{this.state.products}</Container>
       </main>
     );
   }
