@@ -1,4 +1,5 @@
 @import "../../breakpoints.scss";
+@import "../../palette.scss";
 nav.Navigation {
   /* grid-row: var(--Nav-row-start) / var(--Nav-row-end);
   grid-column: col-start / col-16; */
@@ -8,7 +9,7 @@ nav.Navigation {
   justify-items: space-around;
   flex-direction: row;
   margin-bottom: $row-gutter;
-
+  // background-color: $color1;
   grid-area: navigation;
 }
 .nav-links,
@@ -20,9 +21,18 @@ nav.Navigation {
 .nav-links {
   /* grid-area: nav-links; */
   justify-content: space-evenly;
-
+  // color: $complement5;
+  color: white;
   width: 70%;
 }
+.nav-links a:active {
+  color: white;
+}
+.nav-links a:visited,
+.cart-avatar a:visited {
+  color: $complement4;
+}
+
 .cart-avatar {
   /* display: none; */
 }

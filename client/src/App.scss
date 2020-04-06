@@ -1,5 +1,6 @@
 @import "./normalize/normalize-scss-7.0.1/sass/normalize";
 @import "breakpoints";
+@import "palette";
 // @import "./controllers/Header/Header.scss";
 
 html {
@@ -8,6 +9,7 @@ html {
   // font-size: 120%;
   // max-width: $max-width;
   // min-width: $break-xs + $col-gutter * 2;
+  // back
 }
 .App {
   margin-left: auto;
@@ -17,48 +19,49 @@ html {
   padding-top: $row-gutter;
   padding-left: $col-gutter;
   padding-right: $col-gutter;
-  background-color: red;
+  background-color: $color-dark5;
   row-gap: $row-gutter;
   column-gap: $col-gutter;
 
   min-height: 100vh;
 }
+.App > * {
+  // background-color: $color2;
+}
+
 @media screen and (min-width: $break-xs) {
   .App {
-    background-color: orange;
+    // background-color: orange;
   }
 }
 // two columns
 @media screen and (min-width: $break-sm) {
   .App {
-    background-color: yellow;
+    // background-color: yellow;
   }
 }
 // three columns
 @media screen and (min-width: $break-md) {
   .App {
-    background-color: green;
+    // background-color: green;
   }
 }
 // four columns
 @media screen and (min-width: $break-lg) {
   .App {
-    background-color: blue;
+    // background-color: blue;
   }
 }
 // five columns
 @media screen and (min-width: $break-xl) {
   .App {
-    background-color: indigo;
   }
 }
 @media screen and (min-width: $break-xxl) {
   .App {
-    background-color: violet;
   }
 }
 @media screen and (min-width: $break-hd) {
   .App {
-    background-color: grey;
   }
 }

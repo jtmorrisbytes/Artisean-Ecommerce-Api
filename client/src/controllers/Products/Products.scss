@@ -1,9 +1,11 @@
 @import "../../breakpoints.scss";
+
 .Products {
   display: flex;
   flex-direction: column;
   grid-area: main;
   column-gap: $col-gutter;
+  // $background-color: $color3;
 }
 @media screen and (min-width: $break-md) {
   .Products {

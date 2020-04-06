@@ -1,4 +1,5 @@
 @import "../../breakpoints";
+@import "../../palette.scss";
 html {
   --Brand-img-row-start: 0;
   --Brand-img-row-end: 1;
@@ -13,6 +14,9 @@ html {
   /* flex-direction: column; */
   /* grid-template-columns: 1fr;
   grid-template-rows: 2fr 1fr 1fr; */
+  padding: $row-gutter $col-gutter;
+  background-color: $color1;
+  margin-bottom: $row-gutter;
 }
 .Header .brand-img {
   grid-area: brand-img;
@@ -24,7 +28,9 @@ html {
 }
 .Search {
   margin-bottom: $row-gutter;
-  height: $row-gutter * 2;
+  // height: $row-gutter * 2;
+  background-color: $color1;
+  padding: 1px;
 }
 @media screen and (min-width: $break-xs) {
 }

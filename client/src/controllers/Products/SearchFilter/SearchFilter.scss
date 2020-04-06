@@ -1,4 +1,5 @@
 @import "../../../breakpoints.scss";
+@import "../../../palette.scss";
 .SearchFilter {
   // height: 100px;
   // width: 100%;
@@ -6,6 +7,9 @@
   border: 1px solid black;
   // grid-area: searchfilter;
   width: 100%;
+  background-color: $color3;
+  // color: $complement5;
+  padding: $row-gutter $col-gutter;
   margin-right: $col-gutter;
 }
 

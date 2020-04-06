@@ -1,6 +1,13 @@
 .Search > * {
   height: 100%;
 }
+.Search {
+  height: 50px;
+}
 .Search > input {
-  width: 85%;
+  width: 95%;
+}
+.search > a,
+.search > button {
+  width: 5%;
 }
