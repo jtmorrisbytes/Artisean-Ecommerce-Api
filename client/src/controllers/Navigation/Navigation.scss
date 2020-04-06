@@ -35,6 +35,7 @@ nav.Navigation {
 
 .cart-avatar {
   /* display: none; */
+  align-self: flex-end;
 }
 @media only screen and (min-width: $break-sm) {
   .Navigation {
