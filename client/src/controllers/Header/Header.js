@@ -1,6 +1,4 @@
 import React from "react";
-import Navigation from "../Navigation/Navigation";
-import Search from "../Search/Search";
 import { Link } from "react-router-dom";
 import "./Header.scss";
 class Header extends React.Component {
